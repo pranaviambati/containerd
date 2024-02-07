@@ -1,0 +1,23 @@
+# Install Kubeadm, Kubelet & Kubectl
+#Follow this source or below commands.	
+
+#Source:
+#https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/	
+
+#Commands:
+sudo apt-get update
+
+sudo apt-get install -y apt-transport-https curl
+
+#Add repository keys to download tools:
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+
+# Add repository:
+cat <<EOF | sudo tee /etc/apt/sources.list.d/kubernetes.list
+deb https://apt.kubernetes.io/ kubernetes-xenial main
+EOF
+sudo apt-get update
+
+sudo apt-get install -y kubelet kubeadm kubectl
+
+sudo apt-mark hold kubelet kubeadm kubectl
